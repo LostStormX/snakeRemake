@@ -79,18 +79,26 @@ while running:
     while forward:
         player_pos.y -= speed * deltaTime
         time.sleep(5)
+        if backward == True or left == True or right == True:
+            forward = False
 
     while backward:
         player_pos.y += speed * deltaTime
         time.sleep(5)
+        if forward == True or left == True or right == True:
+            backward = False
 
     while left:
         player_pos.x -= speed * deltaTime
         time.sleep(5)
+        if backward == True or forward == True or right == True:
+            left = False
 
     while right:
         player_pos.x += speed * deltaTime
         time.sleep(5)
+        if backward == True or left == True or forward == True:
+            right = False
 
     # Render Shapes
     pygame.draw.rect(screen, "#006c24", player)
