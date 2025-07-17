@@ -38,67 +38,33 @@ while running:
     boundary = pygame.Rect(0,0,700,500)\
 
     # Collission
-    collide = boundary.colliderect(player)
-    if collide:
-        score += 1
-        print(score)
+    #collide = boundary.colliderect(player)
+    #if collide:
+    #    score += 1
+    #    print(score)
 
 
     keys = pygame.key.get_pressed()
 
-    forward = False
-    backward = False
-    left = False
-    right = False
+
 
     # Implementing Arrow Keys
     if keys[pygame.K_UP]:
-        forward = True
-        backward = False
-        left = False
-        right = False
+        while True:
+            player_pos.y -= speed * deltaTime
+
 
     if keys[pygame.K_DOWN]:
-        forward = False
-        backward = True
-        left = False
-        right = False
+        player_pos.y += speed * deltaTime
+
 
     if keys[pygame.K_LEFT]:
-        forward = False
-        backward = False
-        left = True
-        right = False
+        player_pos.x -= speed * deltaTime
+
 
     if keys[pygame.K_RIGHT]:
-        forward = False
-        backward = False
-        left = False
-        right = True
-
-    while forward:
-        player_pos.y -= speed * deltaTime
-        time.sleep(5)
-        if backward == True or left == True or right == True:
-            forward = False
-
-    while backward:
-        player_pos.y += speed * deltaTime
-        time.sleep(5)
-        if forward == True or left == True or right == True:
-            backward = False
-
-    while left:
-        player_pos.x -= speed * deltaTime
-        time.sleep(5)
-        if backward == True or forward == True or right == True:
-            left = False
-
-    while right:
         player_pos.x += speed * deltaTime
-        time.sleep(5)
-        if backward == True or left == True or forward == True:
-            right = False
+
 
     # Render Shapes
     pygame.draw.rect(screen, "#006c24", player)
