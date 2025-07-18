@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31fd1c87-0ce0-4d44-832d-c39087e89f74" name="Changes" comment="committ">
+    <list default="true" id="31fd1c87-0ce0-4d44-832d-c39087e89f74" name="Changes" comment="FIXED continious movement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -115,13 +115,22 @@
       <option name="project" value="LOCAL" />
       <updated>1752776750492</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="FIXED continious movement">
+      <option name="closed" value="true" />
+      <created>1752788507765</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1752788507765</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic player movement + pygame screen rendering" />
     <MESSAGE value="Commit" />
     <MESSAGE value="committ" />
-    <option name="LAST_COMMIT_MESSAGE" value="committ" />
+    <MESSAGE value="FIXED continious movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIXED continious movement" />
   </component>
 </project>

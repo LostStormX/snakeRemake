@@ -11,10 +11,12 @@ pygame.display.set_icon(pygame.image.load("Logo.png"))
 
 clock = pygame.time.Clock()
 run = True
+
 deltaTime = 0
 speed = 5
 score = 0
 length = 1
+gameOver = False
 
 direction = pygame.Vector2(0,0)
 
@@ -29,20 +31,44 @@ while run:
             print(pygame.key.name(event.key))
             if event.key == pygame.K_UP:
                 print(pygame.key.name(event.key))
+            if event.key == pygame.K_ESCAPE:
+                run = False
 
     screen.fill("#009b34")
 
     # Text
-    font = pygame.font.SysFont("Arial", 30, True,False)
-    textSurface = font.render("Score: " + str(score), False, "black")
+    font = pygame.font.SysFont("Arial", 25, True,False)
+    gFont = pygame.font.SysFont("Arial", 40, True,False)
+
+    scoreText = font.render("Score: " + str(score), False, "black")
+    endgameText = gFont.render("GAME OVER", False, "black")
+
 
     # Draw the player obj
     player = pygame.Rect(player_pos.x, player_pos.y,30,30)
     player.centerx = player_pos.x
     player.centery = player_pos.y
 
-    boundary = pygame.Rect(0,0,700,500)
+    boundaryR = pygame.Rect(670,0,30, screen.get_height())
+    boundaryL = pygame.Rect(0,0,30, screen.get_height())
+    boundaryU = pygame.Rect(30,0, screen.get_width() - 60,30)
+    boundaryD = pygame.Rect(30, 470, screen.get_width() - 60,30)
 
+    # Collisions
+    collideU = boundaryU.colliderect(player)
+    collideD = boundaryD.colliderect(player)
+    collideR = boundaryR.colliderect(player)
+    collideL = boundaryL.colliderect(player)
+
+    if collideU or collideD or collideR or collideL:
+        gameOver = True
+
+    if gameOver:
+        direction = pygame.Vector2(0, 0)
+        speed = 0
+
+        screen.blit(scoreText, (screen.get_width() / 2 - 40, screen.get_height() / 2 - 10))
+        screen.blit(endgameText, (screen.get_width() / 2 - 110, screen.get_height() / 2 - 50))
 
     # Implementing Arrow Keys
     keys = pygame.key.get_pressed()
@@ -61,12 +87,16 @@ while run:
 
     # Render Shapes
     pygame.draw.rect(screen, "#006c24", player)
-    pygame.draw.rect(screen, "#006c24", boundary, 35)
+
+    pygame.draw.rect(screen, "#006c24", boundaryL)
+    pygame.draw.rect(screen, "#006c24", boundaryR)
+    pygame.draw.rect(screen, "#006c24", boundaryU)
+    pygame.draw.rect(screen, "#006c24", boundaryD)
 
     # Render text
-    screen.blit(textSurface, (280, 0))
+    screen.blit(scoreText, (30, 0))
 
     pygame.display.flip()
     deltaTime = clock.tick(30)
+
 pygame.quit()
-quit()
