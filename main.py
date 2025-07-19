@@ -1,5 +1,7 @@
+import random
 import time
 from asyncio import wait_for
+from traceback import print_tb
 
 import pygame
 
@@ -16,7 +18,9 @@ deltaTime = 0
 speed = 5
 score = 0
 length = 1
+
 gameOver = False
+fruitEaten = True
 
 direction = pygame.Vector2(0,0)
 
@@ -43,6 +47,15 @@ while run:
     scoreText = font.render("Score: " + str(score), False, "black")
     endgameText = gFont.render("GAME OVER", False, "black")
 
+    if fruitEaten:
+        ranX = random.randint(50, 620)
+        ranY = random.randint(50, 420)
+
+        position = pygame.Vector2(ranX, ranY)
+        print(position)
+
+        fruitEaten = False
+
 
     # Draw the player obj
     player = pygame.Rect(player_pos.x, player_pos.y,30,30)
@@ -54,21 +67,32 @@ while run:
     boundaryU = pygame.Rect(30,0, screen.get_width() - 60,30)
     boundaryD = pygame.Rect(30, 470, screen.get_width() - 60,30)
 
+    fruit = pygame.Rect(position.x, position.y, 30,30)
+
     # Collisions
     collideU = boundaryU.colliderect(player)
     collideD = boundaryD.colliderect(player)
     collideR = boundaryR.colliderect(player)
     collideL = boundaryL.colliderect(player)
 
+    fruitCollide = fruit.colliderect(player)
+
+    if fruitCollide:
+        print("fruit eaten")
+        fruitEaten = True
+        length += 1
+        score += 1
+
     if collideU or collideD or collideR or collideL:
         gameOver = True
 
+    # Game Over Event
     if gameOver:
         direction = pygame.Vector2(0, 0)
         speed = 0
 
-        screen.blit(scoreText, (screen.get_width() / 2 - 40, screen.get_height() / 2 - 10))
-        screen.blit(endgameText, (screen.get_width() / 2 - 110, screen.get_height() / 2 - 50))
+        screen.blit(scoreText, (screen.get_width() / 2 - 50, screen.get_height() / 2 - 10))
+        screen.blit(endgameText, (screen.get_width() / 2 - 120, screen.get_height() / 2 - 50))
 
     # Implementing Arrow Keys
     keys = pygame.key.get_pressed()
@@ -93,8 +117,11 @@ while run:
     pygame.draw.rect(screen, "#006c24", boundaryU)
     pygame.draw.rect(screen, "#006c24", boundaryD)
 
+    pygame.draw.rect(screen, "red", fruit)
+
+
     # Render text
-    screen.blit(scoreText, (30, 0))
+    screen.blit(scoreText, (30, 30))
 
     pygame.display.flip()
     deltaTime = clock.tick(30)

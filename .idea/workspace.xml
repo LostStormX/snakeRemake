@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31fd1c87-0ce0-4d44-832d-c39087e89f74" name="Changes" comment="FIXED continious movement">
+    <list default="true" id="31fd1c87-0ce0-4d44-832d-c39087e89f74" name="Changes" comment="added game over screen&#10;&#10;added border collissions&#10;&#10;code changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -123,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752788507765</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added game over screen&#10;&#10;added border collissions&#10;&#10;code changes">
+      <option name="closed" value="true" />
+      <created>1752818911529</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1752818911529</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -131,6 +139,7 @@
     <MESSAGE value="Commit" />
     <MESSAGE value="committ" />
     <MESSAGE value="FIXED continious movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIXED continious movement" />
+    <MESSAGE value="added game over screen&#10;&#10;added border collissions&#10;&#10;code changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added game over screen&#10;&#10;added border collissions&#10;&#10;code changes" />
   </component>
 </project>
